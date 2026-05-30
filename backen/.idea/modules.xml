@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hotely5d.iml" filepath="$PROJECT_DIR$/hotely5d.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../hotely5d-web/hotely5d-web.iml" filepath="$PROJECT_DIR$/../hotely5d-web/hotely5d-web.iml" />
+    </modules>
+  </component>
+</project>

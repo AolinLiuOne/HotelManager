@@ -1,0 +1,39 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: hotely5d #指定服务名
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hotely5d?characterEncoding=utf8&serverTimezone=GMT&useSSL=false
+    username: root
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss  #配置日期响应时的格式
+    time-zone: GMT+8
+
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml  #配置扫描mapper.xml文件
+  typeAliasesPackage: com.hotely5d.entity  #实体扫描，多个package用逗号或者分号分隔
+  global-config:  #全局配置
+    id-type: 0  #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    field-strategy: 2  #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    db-column-underline: true  #驼峰下划线转换  如：数据库字段-->user_id   实体类属性userId  自动映射
+    #table-prefix: mp_    #mp2.3+ 全局表前缀 mp_
+    #refresh-mapper: true   #刷新mapper 调试神器
+    #capital-mode: true  #数据库大写下划线转换
+    key-generator: com.baomidou.mybatisplus.incrementer.OracleKeyGenerator  # Sequence序列接口实现类配置
+  configuration:
+    map-underscore-to-camel-case: true   #配置返回数据库(column下划线命名&&返回java实体是驼峰命名)，自动匹配无需as（没开启这个，SQL需要写as： select user_id as userId）
+    cache-enabled: false
+    jdbc-type-for-null: 'null' #配置JdbcTypeForNull, oracle数据库必须配置
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #配置控制台打印sql 正式环境可以关闭
+
+upload:
+  sufix: .jpg,.png,.gif,.jpeg #后缀
+  maxsize: 10240 #文件最大值 10M
+  path: file:C:/Users/Clef/Desktop/HotelBooking/code/images/hotely5d/
+  realPath: C:/Users/Clef/Desktop/HotelBooking/code/images/hotely5d/
+  staticAccessPath: /images/** # 通过http://localhost:8080/images/xxx.png访问图片
+  urlPrefix: http://localhost:${server.port}/images/

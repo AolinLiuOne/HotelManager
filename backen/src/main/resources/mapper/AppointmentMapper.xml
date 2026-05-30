@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hotely5d.dao.AppointmentMapper" >
+
+    <!--基础resultMap -->
+    <resultMap id="baseResultMap" type="com.hotely5d.entity.Appointment">
+	        <id column="id" property="id" jdbcType="INTEGER" />
+	        <result column="member_id" property="memberId" jdbcType="INTEGER" />
+	        <result column="category_id" property="categoryId" jdbcType="INTEGER" />
+	        <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+	        <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+	        <result column="status" property="status" jdbcType="INTEGER" />
+	        <result column="remark" property="remark" jdbcType="VARCHAR" />
+	        <result column="money" property="money" jdbcType="DECIMAL" />
+		    <result column="hotel_id" property="hotelId" jdbcType="INTEGER" />
+    </resultMap>
+
+	<select id="getMonthlyIncomeByHotelId" parameterType="int" resultType="com.hotely5d.entity.MonthlyIncome">
+		SELECT
+			DATE_FORMAT(start_time, '%Y-%m') AS month,
+        IFNULL(SUM(money), 0) AS income
+		FROM appointment
+		WHERE hotel_id = #{hotelId}
+		GROUP BY DATE_FORMAT(start_time, '%Y-%m')
+		ORDER BY month ASC
+	</select>
+
+
+
+</mapper>

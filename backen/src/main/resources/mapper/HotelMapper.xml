@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+
+
+<mapper namespace="com.hotely5d.dao.HotelMapper" >
+    <resultMap id="baseResultMap" type="com.hotely5d.entity.Hotel">
+        <id column="id" property="hotelId" jdbcType="INTEGER" />
+        <result column="hotel" property="hotel" jdbcType="VARCHAR" />
+    </resultMap>
+</mapper>

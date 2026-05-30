@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hotely5d.dao.RoomMapper" >
+
+    <!--基础resultMap -->
+    <resultMap id="baseResultMap" type="com.hotely5d.entity.Room">
+	        <id column="id" property="id" jdbcType="INTEGER" />
+	        <result column="room_num" property="roomNum" jdbcType="INTEGER" />
+	        <result column="category_id" property="categoryId" jdbcType="INTEGER" />
+	        <result column="status" property="status" jdbcType="INTEGER" />
+			<result column="hotel_id" property="hotelId" jdbcType="INTEGER" />
+    </resultMap>
+
+</mapper>
